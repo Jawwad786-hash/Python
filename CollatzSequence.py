@@ -1,11 +1,13 @@
-print("Mohd Jawwad Ali Farooqui,USN:1AY24AI070,SEC:O")
+print("Mohd Jawwad Ali Farooqui, USN: 1AY24AI070, SEC: O")
+
 def collatz(number):
     if number % 2 == 0:
-        result = number 
+        result = number // 2
     else:
         result = 3 * number + 1
     print(result)
     return result
+
 try:
     user_input = int(input("Enter an integer: "))
     while user_input != 1:
