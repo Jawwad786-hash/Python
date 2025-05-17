@@ -1,26 +1,40 @@
 print("Mohd Jawwad Ali Farooqui, USN:1AY24AI070, SEC:O")
-def isValidChessBoard(board):
-    valid_positions = {f"{c}{r}" for c in "abcdefgh" for r in range(1, 9)}
-    valid_pieces = {'pawn', 'knight', 'bishop', 'rook', 'queen', 'king'}
-    piece_count = {'w': 0, 'b': 0}
-    king_count = {'w': 0, 'b': 0}
-    pawn_count = {'w': 0, 'b': 0}
-    for position, piece in board.items():
-        if position not in valid_positions:
-            return False
-        if len(piece) < 2 or piece[0] not in 'wb' or piece[1:] not in valid_pieces:
-            return False
-        color = piece[0]
-        piece_type = piece[1:]
-        piece_count[color] += 1
-        if piece_type == 'king':
-            king_count[color] += 1
-        if piece_type == 'pawn':
-            pawn_count[color] += 1
-    if king_count['w'] != 1 or king_count['b'] != 1:
-        return False
-    if piece_count['w'] > 16 or piece_count['b'] > 16:
-        return False
-    if pawn_count['w'] > 8 or pawn_count['b'] > 8:
-        return False
-    return True
+def create_chess_dictionary():
+    chess_pieces = {
+        "King": {
+            "abbreviation": "K",
+            "movement": "Moves one square in any direction."
+        },
+        "Queen": {
+            "abbreviation": "Q",
+            "movement": "Moves any number of squares in any direction."
+        },
+        "Rook": {
+            "abbreviation": "R",
+            "movement": "Moves any number of squares vertically or horizontally."
+        },
+        "Bishop": {
+            "abbreviation": "B",
+            "movement": "Moves any number of squares diagonally."
+        },
+        "Knight": {
+            "abbreviation": "N",
+            "movement": "Moves in an L-shape: two squares in one direction and then one square perpendicular."
+        },
+        "Pawn": {
+            "abbreviation": "P",
+            "movement": "Moves forward one square, but captures diagonally. On first move, can advance two squares."
+        }
+    }
+    return chess_pieces
+def display_chess_dictionary(chess_dict):
+    print("\n--- Chess Dictionary ---\n")
+    for piece, details in chess_dict.items():
+        print(f"Piece: {piece}")
+        print(f"  Abbreviation: {details['abbreviation']}")
+        print(f"  Movement: {details['movement']}\n")
+if __name__ == "__main__":
+    chess_dict = create_chess_dictionary()
+    display_chess_dictionary(chess_dict)
+
+   
